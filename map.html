@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Map of Ireland</title>
+  <script src="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.js"></script>
+  <link href="https://api.mapbox.com/mapbox-gl-js/v2.14.1/mapbox-gl.css" rel="stylesheet">
+  <style>
+    #map {
+      width: 100%;
+      height: 500px;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Explore Ireland</h1>
+  </header>
+
+  <main>
+    <div id="map"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Irish Travel Guide</p>
+  </footer>
+
+  <script>
+    // Initialize Mapbox map
+    mapboxgl.accessToken = 'pk.eyJ1Ijoic2FyYWgtYnJlZGljYW4iLCJhIjoiY200eGRxeWVrMG4wbTJqc2Y0OWd3OXdkYyJ9.priITsDmxkAu-huIVmLAUw'
+    const map = new mapboxgl.Map({
+      container: 'map',
+      style: 'mapbox://styles/mapbox/streets-v11', // Map style
+      center: [-8.24389, 53.41291], // Longitude, Latitude (Ireland center)
+      zoom: 6, // Starting zoom level
+    });
+
+    // Add markers for key locations
+    const locations = [
+      { name: "Dublin", coords: [-6.26031, 53.349805] },
+      { name: "Cliffs of Moher", coords: [-9.42658, 52.971457] },
+      { name: "Giant's Causeway", coords: [-6.51159, 55.240807] },
+      { name: "Galway", coords: [-9.056791, 53.270668] },
+      { name: "Killarney", coords: [-9.508437, 52.059998] },
+    ];
+
+    locations.forEach(location => {
+      const marker = new mapboxgl.Marker()
+        .setLngLat(location.coords)
+        .setPopup(new mapboxgl.Popup().setHTML(`<h3>${location.name}</h3><p>A beautiful place in Ireland!</p>`))
+        .addTo(map);
+    });
+  </script>
+</body>
+</html>
