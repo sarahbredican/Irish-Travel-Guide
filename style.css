@@ -40,7 +40,7 @@ header nav ul li a:hover {
 
 /* Hero Section */
 #hero {
-  background: url('images/irish flag.jpg') no-repeat center center/cover; /*Replace with your image */
+  background: url('irish flag.jpg') no-repeat center center/cover; /*Replace with your image */
   height: 60vh;
   color: white;
   display: flex;
